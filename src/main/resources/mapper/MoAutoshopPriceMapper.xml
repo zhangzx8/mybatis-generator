@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gome.upm.dao.MoAutoshopPriceMapper" >
+  <resultMap id="BaseResultMap" type="com.gome.upm.domain.auto.MoAutoshopPrice" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sku_no" property="skuNo" jdbcType="VARCHAR" />
+    <result column="term" property="term" jdbcType="VARCHAR" />
+    <result column="product_uri" property="productUri" jdbcType="VARCHAR" />
+    <result column="search_date" property="searchDate" jdbcType="TIMESTAMP" />
+    <result column="first_pshell_price" property="firstPshellPrice" jdbcType="DECIMAL" />
+    <result column="detail_pshell_price" property="detailPshellPrice" jdbcType="DECIMAL" />
+    <result column="detail_prom_price" property="detailPromPrice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sku_no skuNo, term, product_uri productUri, search_date searchDate, first_pshell_price firstPshellPrice, detail_pshell_price detailPshellPrice, 
+    detail_prom_price detailPromPrice
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mo_autoshop_price
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mo_autoshop_price
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.gome.upm.domain.auto.MoAutoshopPrice" >
+    insert into mo_autoshop_price
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="skuNo != null" >
+        sku_no,
+      </if>
+      <if test="term != null" >
+        term,
+      </if>
+      <if test="productUri != null" >
+        product_uri,
+      </if>
+      <if test="searchDate != null" >
+        search_date,
+      </if>
+      <if test="firstPshellPrice != null" >
+        first_pshell_price,
+      </if>
+      <if test="detailPshellPrice != null" >
+        detail_pshell_price,
+      </if>
+      <if test="detailPromPrice != null" >
+        detail_prom_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="skuNo != null" >
+        #{skuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="term != null" >
+        #{term,jdbcType=VARCHAR},
+      </if>
+      <if test="productUri != null" >
+        #{productUri,jdbcType=VARCHAR},
+      </if>
+      <if test="searchDate != null" >
+        #{searchDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstPshellPrice != null" >
+        #{firstPshellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="detailPshellPrice != null" >
+        #{detailPshellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="detailPromPrice != null" >
+        #{detailPromPrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gome.upm.domain.auto.MoAutoshopPrice" >
+    update mo_autoshop_price
+    <set >
+      <if test="skuNo != null" >
+        sku_no = #{skuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="term != null" >
+        term = #{term,jdbcType=VARCHAR},
+      </if>
+      <if test="productUri != null" >
+        product_uri = #{productUri,jdbcType=VARCHAR},
+      </if>
+      <if test="searchDate != null" >
+        search_date = #{searchDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstPshellPrice != null" >
+        first_pshell_price = #{firstPshellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="detailPshellPrice != null" >
+        detail_pshell_price = #{detailPshellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="detailPromPrice != null" >
+        detail_prom_price = #{detailPromPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

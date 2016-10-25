@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gome.upm.dao.MoAutoshopBuyMapper" >
+  <resultMap id="BaseResultMap" type="com.gome.upm.domain.auto.MoAutoshopBuy" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sku_no" property="skuNo" jdbcType="VARCHAR" />
+    <result column="term" property="term" jdbcType="VARCHAR" />
+    <result column="pruduct_uri" property="pruductUri" jdbcType="VARCHAR" />
+    <result column="search_date" property="searchDate" jdbcType="TIMESTAMP" />
+    <result column="first_pshell_status" property="firstPshellStatus" jdbcType="INTEGER" />
+    <result column="detail_pshell_status" property="detailPshellStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sku_no skuNo, term, pruduct_uri pruductUri, search_date searchDate, first_pshell_status firstPshellStatus, detail_pshell_status detailPshellStatus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mo_autoshop_buy
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mo_autoshop_buy
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.gome.upm.domain.auto.MoAutoshopBuy" >
+    insert into mo_autoshop_buy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="skuNo != null" >
+        sku_no,
+      </if>
+      <if test="term != null" >
+        term,
+      </if>
+      <if test="pruductUri != null" >
+        pruduct_uri,
+      </if>
+      <if test="searchDate != null" >
+        search_date,
+      </if>
+      <if test="firstPshellStatus != null" >
+        first_pshell_status,
+      </if>
+      <if test="detailPshellStatus != null" >
+        detail_pshell_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="skuNo != null" >
+        #{skuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="term != null" >
+        #{term,jdbcType=VARCHAR},
+      </if>
+      <if test="pruductUri != null" >
+        #{pruductUri,jdbcType=VARCHAR},
+      </if>
+      <if test="searchDate != null" >
+        #{searchDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstPshellStatus != null" >
+        #{firstPshellStatus,jdbcType=INTEGER},
+      </if>
+      <if test="detailPshellStatus != null" >
+        #{detailPshellStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gome.upm.domain.auto.MoAutoshopBuy" >
+    update mo_autoshop_buy
+    <set >
+      <if test="skuNo != null" >
+        sku_no = #{skuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="term != null" >
+        term = #{term,jdbcType=VARCHAR},
+      </if>
+      <if test="pruductUri != null" >
+        pruduct_uri = #{pruductUri,jdbcType=VARCHAR},
+      </if>
+      <if test="searchDate != null" >
+        search_date = #{searchDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstPshellStatus != null" >
+        first_pshell_status = #{firstPshellStatus,jdbcType=INTEGER},
+      </if>
+      <if test="detailPshellStatus != null" >
+        detail_pshell_status = #{detailPshellStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
